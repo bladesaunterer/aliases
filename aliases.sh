@@ -31,6 +31,7 @@ alias git pull='git pull --rebase'
 alias gf='git fetch'
 alias gc='git commit'
 alias gcm='git commit -m'
+alias gcam='git commit -am'
 alias gcd='git checkout development'
 alias greset='git add --all && git reset --hard HEAD && git clean -fd'
 alias gpu='git rev-parse --abbrev-ref HEAD | xargs git push -u origin'
@@ -58,9 +59,12 @@ alias ls="command ls -h ${colorflag}"
 # Capistrano
 alias cap="bundle exec cap"
 
+PROJECTDIR="~/Projects"
+ALIASDIR=$PROJECTDIR+'/aliases/.aliases.sh'
 
-alias aliases="code ~/.aliases"
+alias aliases="code ${ALIASDIR}"
 alias sshconfig="code ~/.ssh/config"
-alias projects="cd ~/Projects"
+alias zshrc="code ~/.zshrc"
+alias projects="cd ${PROJECTDIR}"
 alias cheatsheet="less .cheatsheet"
 alias rgrav-unison-scripts="rgrav script publish_forms run_db_grants load_demo_users load_demo_data load_demo_relationships"
