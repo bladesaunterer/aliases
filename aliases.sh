@@ -1,18 +1,4 @@
-# Move to solutions directory from anywhere
-alias sol="cd ~/Projects/solutions"
- 
-# rgrav
-alias rgrav-combined="rgrav deploy -R unison_frontend:0 -R unison_backend:0 -R unison_haproxy:0 -R connect:0 -R consumer_frontend:0 -R consumer_haproxy:0 -p ec2"
-alias rgrav-split="rgrav deploy -R frontend:0 -R backend:0 -R connect:0 -R haproxy:0 -R rhapsody_ohop:0 -R empi:0 -R consumer_frontend:0 -R consumer_haproxy:0 -p ec2"
-alias rgrav-hie="rgrav deploy -R connect:0 -R rhapsody_ohop:0 -R rhapsody_sitespecific:0 -p ec2"
- 
-# Deploys
-alias pathways="./resources/scripts/pathway_enable_care_coordination && ./resources/scripts/pathway_enable_transition_of_care && ./resources/scripts/example_forms_enable_consult"
-alias slurp_move="./resources/scripts/pathway_slurp_move_care_coordination && ./resources/scripts/pathway_slurp_move_transition_of_care && ./resources/scripts/example_forms_slurp_move_consult"
- 
-# Auckland jump host
-alias jump="ssh $USER@graviton-jump-host-auckland"
- 
+
 # Navigate out of directories quickly
 alias ..="cd .."
 alias ...="cd ../.."
@@ -67,4 +53,3 @@ alias sshconfig="code ~/.ssh/config"
 alias zshrc="code ~/.zshrc"
 alias projects="cd ${PROJECTDIR}"
 alias cheatsheet="less .cheatsheet"
-alias rgrav-unison-scripts="rgrav script publish_forms run_db_grants load_demo_users load_demo_data load_demo_relationships"
