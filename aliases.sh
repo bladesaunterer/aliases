@@ -46,10 +46,10 @@ alias ls="command ls -h ${colorflag}"
 alias cap="bundle exec cap"
 
 PROJECTDIR="~/Projects"
-ALIASDIR=$PROJECTDIR+'/aliases/.aliases.sh'
+ALIASDIR="$PROJECTDIR/aliases/.aliases.sh"
 
-alias aliases="code ${ALIASDIR}"
+alias aliases="code $ALIASDIR"
 alias sshconfig="code ~/.ssh/config"
 alias zshrc="code ~/.zshrc"
-alias projects="cd ${PROJECTDIR}"
+alias projects="cd $PROJECTDIR"
 alias cheatsheet="less .cheatsheet"
