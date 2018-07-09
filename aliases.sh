@@ -45,8 +45,8 @@ alias ls="command ls -h ${colorflag}"
 # Capistrano
 alias cap="bundle exec cap"
 
-PROJECTDIR="~/Projects"
-ALIASDIR="$PROJECTDIR/aliases/.aliases.sh"
+PROJECTDIR="$HOME/Projects/"
+ALIASDIR="$PROJECTDIR/aliases"
 
 alias aliases="code $ALIASDIR"
 alias sshconfig="code ~/.ssh/config"
