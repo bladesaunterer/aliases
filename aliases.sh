@@ -12,10 +12,10 @@ alias gl='git log --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cg
 alias gs='git status'
 alias gss='git status --short'
 alias gd='git diff'
-alias gp='git pull'
-alias git pull='git pull --rebase'
+alias gp='git pull --rebase'
 alias gf='git fetch'
 alias gc='git commit'
+alias gcl='git clone'
 alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gcd='git checkout development'
@@ -48,7 +48,8 @@ alias cap="bundle exec cap"
 PROJECTDIR="$HOME/Projects/"
 ALIASDIR="$PROJECTDIR/aliases"
 
-alias aliases="code $ALIASDIR"
+alias alc="code $ALIASDIR"
+alias alcd="cd $ALIASDIR"
 alias sshconfig="code ~/.ssh/config"
 alias zshrc="code ~/.zshrc"
 alias projects="cd $PROJECTDIR"
