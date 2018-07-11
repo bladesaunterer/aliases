@@ -20,7 +20,8 @@ alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gcd='git checkout development'
 alias greset='git add --all && git reset --hard HEAD && git clean -fd'
-alias gpu='git rev-parse --abbrev-ref HEAD | xargs git push -u origin'
+alias gpuu='git rev-parse --abbrev-ref HEAD | xargs git push -u origin'
+alias gpu='git push'
  
 # ls
 # Detect which `ls` flavor is in use
