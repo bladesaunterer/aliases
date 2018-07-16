@@ -20,8 +20,11 @@ alias gcm='git commit -m'
 alias gcam='git commit -am'
 alias gcd='git checkout development'
 alias greset='git add --all && git reset --hard HEAD && git clean -fd'
+alias gch='git checkout'
+alias gchb='git checkout -b'
 alias gpuu='git rev-parse --abbrev-ref HEAD | xargs git push -u origin'
 alias gpu='git push'
+alias gsq=git_squash
  
 # ls
 # Detect which `ls` flavor is in use
@@ -54,4 +57,48 @@ alias alcd="cd $ALIASDIR"
 alias sshconfig="code ~/.ssh/config"
 alias zshrc="code ~/.zshrc"
 alias projects="cd $PROJECTDIR"
-alias cheatsheet="less .cheatsheet"
+alias cheatsheet="less $HOME/.cheatsheet"
+
+
+git_squash () {
+    if [ $# -eq 0 ]; then
+        echo "usage: gsq <number_of_commits_to_squash>"
+        return
+    fi
+    
+    # note the current HEAD commit
+    old_head=$(git rev-parse HEAD)
+    echo "Current HEAD: $old_head"
+
+    # http://stackoverflow.com/a/5201642
+    git rebase -i HEAD~$1
+
+    git status
+
+    
+
+    # print undo action
+    echo
+    echo "To undo this change: git reset $old_head"
+    # git rebase -i HEAD~$1
+}
+
+git-squash() {
+    if [ "$1" == "" ]; then
+        echo "usage: git-squash <number_of_commits_to_squash>"
+        return
+    fi
+
+    # note the current HEAD commit
+    old_head=$(git rev-parse HEAD)
+    echo "Current HEAD: $old_head"
+
+    # http://stackoverflow.com/a/5201642
+    git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
+
+    # print undo action
+    if [ $? -eq 0 ]; then
+        echo
+        echo "To undo this change: git reset $old_head"
+    fi
+}
