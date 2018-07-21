@@ -72,33 +72,12 @@ git_squash () {
 
     # http://stackoverflow.com/a/5201642
     git rebase -i HEAD~$1
-
-    git status
-
     
 
     # print undo action
     echo
     echo "To undo this change: git reset $old_head"
-    # git rebase -i HEAD~$1
+
 }
 
-git-squash() {
-    if [ "$1" == "" ]; then
-        echo "usage: git-squash <number_of_commits_to_squash>"
-        return
-    fi
 
-    # note the current HEAD commit
-    old_head=$(git rev-parse HEAD)
-    echo "Current HEAD: $old_head"
-
-    # http://stackoverflow.com/a/5201642
-    git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
-
-    # print undo action
-    if [ $? -eq 0 ]; then
-        echo
-        echo "To undo this change: git reset $old_head"
-    fi
-}
