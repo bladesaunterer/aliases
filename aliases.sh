@@ -2,6 +2,7 @@
 # Navigate out of directories quickly
 alias ..="cd .."
 alias ...="cd ../.."
+alias cdtop="cd `git rev-parse --show-toplevel`"
  
 alias c="clear"  
 alias h="history"
@@ -49,7 +50,7 @@ alias ls="command ls -h ${colorflag}"
 # Capistrano
 alias cap="bundle exec cap"
 
-PROJECTDIR="$HOME/Projects/"
+PROJECTDIR="$HOME/Projects"
 ALIASDIR="$PROJECTDIR/aliases"
 
 alias alc="code $ALIASDIR"
@@ -60,45 +61,33 @@ alias projects="cd $PROJECTDIR"
 alias cheatsheet="less $HOME/.cheatsheet"
 
 
+alias findrep=find_replace
+
 git_squash () {
     if [ $# -eq 0 ]; then
         echo "usage: gsq <number_of_commits_to_squash>"
         return
     fi
     
-    # note the current HEAD commit
     old_head=$(git rev-parse HEAD)
     echo "Current HEAD: $old_head"
 
-    # http://stackoverflow.com/a/5201642
     git rebase -i HEAD~$1
-
-    git status
-
     
-
-    # print undo action
     echo
     echo "To undo this change: git reset $old_head"
-    # git rebase -i HEAD~$1
+
+    return
+
 }
 
-git-squash() {
-    if [ "$1" == "" ]; then
-        echo "usage: git-squash <number_of_commits_to_squash>"
+
+find_replace() {
+    if [ $# -eq 0 ]; then
+        echo "usage: findrep <find value> <replacement value>"
         return
     fi
 
-    # note the current HEAD commit
-    old_head=$(git rev-parse HEAD)
-    echo "Current HEAD: $old_head"
-
-    # http://stackoverflow.com/a/5201642
-    git reset --soft HEAD~$1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
-
-    # print undo action
-    if [ $? -eq 0 ]; then
-        echo
-        echo "To undo this change: git reset $old_head"
-    fi
+    grep -rl $1 . | xargs sed -i '' -e "s/$1/$2/"
+    return
 }
