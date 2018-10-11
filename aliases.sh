@@ -2,7 +2,9 @@
 # Navigate out of directories quickly
 alias ..="cd .."
 alias ...="cd ../.."
-alias cdtop="cd `git rev-parse --show-toplevel`"
+alias cdtop=top_level_dir
+
+
  
 alias c="clear"  
 alias h="history"
@@ -90,4 +92,8 @@ find_replace() {
 
     grep -rl $1 . | xargs sed -i '' -e "s/$1/$2/"
     return
+}
+
+top_level_dir() {
+    cd $(git rev-parse --show-toplevel)
 }
